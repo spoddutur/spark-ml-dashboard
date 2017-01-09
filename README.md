@@ -1,6 +1,13 @@
-Binary Classification of News into Science or non-Science
+Binary Classification of News
 -------
-Structure of files in this repository:
+
+20news-bydate-zeppelin-note is the working zeppelin notebook which does the following tasks:
+- We load scikit's news data 
+- Classify them into Science and nonScience using a machine learning pipeline of "Tokenizer, HashingTF and LogisticRegression"
+- Evaluate model using areaUnderROC
+- Save test data predictions as json and the trained model.
+
+###Structure of files in this repository:
 - ***data:*** Contains [training and test data](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html) which contains news and its category.
 - ***predictions.json:*** output of the predictions that the model we trained.
 - ***trained_model:*** Final model we trained
