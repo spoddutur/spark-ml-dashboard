@@ -36,6 +36,16 @@ Final accuracy achieved
 -----
 0.9296967048295749
 
+K-Fold Best Params
+---
+```
+{
+	logreg_2be4a9a4df41-maxIter: 10,
+	hashingTF_5e435011f5a5-numFeatures: 10000,
+	logreg_2be4a9a4df41-regParam: 0.2
+}
+```
+
 Get Running
 ------
 - Checkout the project 
