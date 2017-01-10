@@ -1,6 +1,13 @@
 Binary Classification of News
 -------
-It's a Spark 2.1 ML implementation using K-Fold CrossValidation on a ML Pipeline.
+It's a Spark 2.1 ML implementation to classify news documents into Science or NonScience category. We've done this using K-Fold CrossValidation on a ML Pipeline.
+
+Input Data Distribution
+-----
+Label|Training Data Counts| Test Data Counts
+---|---|---
+Science|8941|5953
+NonScience|2373|1579
 
 Pipeline used for training
 ------
@@ -8,13 +15,26 @@ Following diagram depicts the pipeline we used for news classification. Image ta
 
 ![pipeline-diagram](https://cloud.githubusercontent.com/assets/22542670/21791030/2c3c0202-d706-11e6-9db4-de24ed14ce98.png)
 
-Input Data Distribution
+ParamsGrid used for k-fold
 -----
+```
+val paramGrid = new ParamGridBuilder()
+  .addGrid(hashingTF.numFeatures, Array(1000, 10000))
+  .addGrid(lr.regParam, Array(0.05, 0.2))
+  .addGrid(lr.maxIter, Array(5, 10, 15))
+  .build
+```
 
-Label|Training Data Counts| Test Data Counts
----|---|---
-Science|8941|5953
-NonScience|2373|1579
+Evaluator used
+-----
+```
+import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
+val evaluator = new BinaryClassificationEvaluator().setMetricName("areaUnderROC")
+```
+
+Final accuracy achieved
+-----
+0.9296967048295749
 
 Get Running
 ------
