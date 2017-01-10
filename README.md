@@ -39,14 +39,14 @@ Final accuracy achieved
 Get Running
 ------
 - Checkout the project 
-- Import `20news-bydate-zeppelin-note` zeppelin notebook and run it OR take the scala code in the zeppelin note and do a spark-submit
+- Import `20news-bydate-classification.json` zeppelin notebook and run it OR take the scala code in the zeppelin note and do a spark-submit
 
 Structure of files in this repository
 ---------
 - ***data:*** Contains training and test news data taken from [scikit](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html).
 - ***predictions.json:*** Final output of our trained model predictions on test data.
 - ***trained_model:*** Final model we trained
-- ***20news-bydate-zeppelin-note:*** Working zepplin note which loads training data, trains a model, predicts on test data.
+- ***20news-bydate-classification.json:*** Working zepplin note which loads training data, trains a model, predicts on test data.
 
 Requirements
 -------
