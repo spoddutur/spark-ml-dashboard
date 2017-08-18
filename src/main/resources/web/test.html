@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test Model</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="node_modules/angular/bootstrap.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular/ui-bootstrap-tpls-1.3.2.js"></script>
+    <script src="node_modules/angular/angular-http-loader.min.js"></script>
+    <style>
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    input[type="text"]
+    {
+        font-size:24px;
+    }
+
+    label
+    {
+        font-size:24px;
+    }
+
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    th, td {
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+    background-color: #4CAF50;
+    color: white;
+    }
+    </style>
+</head>
+<body ng-app="TestSparkMlModel">
+<div ng-controller="SparkMlModelController" >
+<form name="queryForm" ng-submit="submitTheForm()">
+
+        <h2>Model params: </h2>
+        <div ng-repeat="modelParam in formData.modelParams">
+            <label>{{modelParam.label}} </label>
+            <input type="text" ng-model="modelParam.default"/>
+        </div>
+        <hr/>
+        <h2>Query: &nbsp; &nbsp;</h2><input size="50" type="text" ng-model="formData.query"/> &nbsp; &nbsp;
+        <input class="button" type="submit" name="Submit"/>
+        <hr/>
+    </form>
+
+    <table>
+        <tr>
+            <th>DocumentName</th>
+            <th>ClassificationResult - IsScience?</th>
+        </tr>
+        <tr ng-repeat="x in helloTo.title">
+            <td>{{ x.docName }}</td>
+            <td>{{ x.isScience }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- controller -->
+<script src="js/test.js"></script>
+</body>
+</html>
