@@ -9,14 +9,16 @@ import com.typesafe.config.ConfigFactory
   */
 object AppConfig {
 
-  val conf = ConfigFactory.load
+  val conf = ConfigFactory.load("application.properties")
   val sparkMasterDef = conf.getString("spark.master")
   val sparkAppNameDef = conf.getString("spark.appname")
   val akkaHttpPortDef = conf.getInt("akka.http.port")
+  val trainedModelPathDef = conf.getString("tm")
 
   var akkaHttpPort = akkaHttpPortDef
   var sparkMaster = sparkMasterDef
   var sparkAppName = sparkAppNameDef
+  var trainedModelPath = trainedModelPathDef
 
   def main(args: Array[String]): Unit = {
     parse("-m localhost1 --akkaHttpPort 8080".split(" ").toList)

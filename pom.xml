@@ -85,6 +85,10 @@
                                         implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/spring.schemas</resource>
                                 </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>reference.conf</resource>
+                                </transformer>
                             </transformers>
                         </configuration>
                     </execution>
@@ -101,10 +105,37 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/resources/</directory>
+                <directory>src/main/resources/${env}</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources/common</directory>
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>stage</id>
+            <properties>
+                <env>stage</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>

@@ -15,6 +15,7 @@ final case class TestModelResponse(docName: String, isScience: Boolean)
 
 // To Benchmark:
 // ab -n 5 -c 1 -T "application/json" -p /Users/surthi/Downloads/delme1.json -m POST http://localhost:8003/testmodelpost
+// ab -n 5 -c 1 -T "application/json" -p post-query-to-benchmark.json -m POST http://localhost:8003/testmodelpost
 object WebServer extends HttpApp with JsonSupport {
   override def routes: Route =
     HomePageRouter.route ~

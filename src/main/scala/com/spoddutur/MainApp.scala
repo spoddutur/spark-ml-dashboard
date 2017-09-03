@@ -1,6 +1,7 @@
 package com.spoddutur
 
 import akka.http.scaladsl.settings.ServerSettings
+import com.spoddutur.spark.SparkFactory.getClass
 import com.spoddutur.spark.ml.web.WebServer
 import com.spoddutur.spark.{AppConfig, SparkFactory}
 import com.typesafe.config.ConfigFactory
@@ -14,28 +15,33 @@ import scala.reflect.runtime.{universe => ru}
   */
 object MainApp extends App {
 
+  val baseConfig = ConfigFactory.load()
+  val c = baseConfig.getConfig("akka.http")
+  println(c)
+
   Logger.getLogger("org").setLevel(Level.OFF)
   Logger.getLogger("akka").setLevel(Level.OFF)
- /* Reflection.findVals(LogisticRegressionModel.getClass)
-  val a = LogisticRegressionModel
 
-  val d = ru.typeOf[LogisticRegressionModel]
-    .decls
+  /* Reflection.findVals(LogisticRegressionModel.getClass)
+   val a = LogisticRegressionModel
 
-    d.map(x => x.asTerm)
-    .foreach(x =>
-      {
-        var a = x.isMethod
-        if(x.isMethod){
-          var m = x.asMethod
-          val numArgs = if(m.paramLists.length > 0)  m.paramLists(0).length else -1
-          val isSetter = m.isPublic && m.name.toString.matches("^set[A-Z].*") && numArgs == 1
-          println(m, isSetter)
-        }
-        // println(x, if(x.isMethod) x.asMethod.isSetter else false)
-      })
+   val d = ru.typeOf[LogisticRegressionModel]
+     .decls
 
-*/
+     d.map(x => x.asTerm)
+     .foreach(x =>
+       {
+         var a = x.isMethod
+         if(x.isMethod){
+           var m = x.asMethod
+           val numArgs = if(m.paramLists.length > 0)  m.paramLists(0).length else -1
+           val isSetter = m.isPublic && m.name.toString.matches("^set[A-Z].*") && numArgs == 1
+           println(m, isSetter)
+         }
+         // println(x, if(x.isMethod) x.asMethod.isSetter else false)
+       })
+
+ */
   // .getClass.getDeclaredMethods.filter(m => m)
 // map(m => m.asTerm).filter(t => t.isSetter)
   // init config params from cmd-line args
@@ -49,7 +55,12 @@ object MainApp extends App {
   // println(CountryApiService.getCountryInfo("CountryCode = 'IND'"))
 
   // Starting the server
-  WebServer.startServer("localhost", AppConfig.akkaHttpPort, ServerSettings(ConfigFactory.load))
+ /* println("here.. loading config")
+  val config = ConfigFactory.load("file:///Users/surthi/mygitrepo/20news-bydate/target/classes/application.conf")
+  println("here.. loaded config", config)
+  println("akka-http:", config.getConfig("akka.http"))*/
+
+  WebServer.startServer("localhost", AppConfig.akkaHttpPort, ServerSettings(baseConfig))
   println(s"Server online at http://localhost:", AppConfig.akkaHttpPort, "/")
   println("Done")
 }

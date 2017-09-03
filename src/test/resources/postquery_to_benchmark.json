@@ -1,0 +1,1 @@
+{"query":"./data/20news-bydate-test/sci.crypt/","lrThreshold":"0.5","lrRegParam":"0.2","lrMaxIter":"5","htfNumFeatures":"5000"}
