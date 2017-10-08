@@ -4,8 +4,9 @@ This project shows how to use SPARK MLLib and build a ML Dashboard to:
 2. Quickly test the model with the new params using sample test data.
 
 ## 1. Central Idea
-Taditionally, for a datascienctist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters and test it using test data.
-If the results are not matching the expectations, this could potentially lead to another iteration of tweaking the model and evaluating it.
+Logistic regressions, decision trees, SVMs, neural networks etc have a set of structural choices that one must make before actually fitting the model parameters. For example, within the logistic regression family, you can build separate models using either L1 or L2 regularization penalties. Within the decision tree family, you can have different models with different structural choices such as the depth of the tree, pruning thresholds, or even the splitting criteria. These structural choices are called hyperparameters.
+
+Taditionally, for a datascienctist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters and test it using test data. If the results are not matching the expectations, this could potentially lead to another iteration of tweaking the model and evaluating it.
 In this project, am proposing a solution to ease datascientists off some part of this iteration.
 
 ## 2. Proposal:
@@ -19,7 +20,7 @@ In this project, am proposing a solution to ease datascientists off some part of
 ![out](https://user-images.githubusercontent.com/22542670/31316609-3e301304-ac4e-11e7-9019-196ca0c95f5a.gif)
 
 **Model used in this project:**
-For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found here.
+For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found in the appendix section below.
 
 **Dashboard Inputs:**
 - Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
@@ -28,30 +29,91 @@ For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classif
   3. LinearRegression - Max Iterations  
   4. HashingTF - Number of Features
 
-- Folder containing the test data
+- Test Data to evaluate: Folder containing the documents to test
 
-**Initial values:** These params are displayed with their respective default values that the model was trained to have.
+**Initial values of the model params displayed in the dashboard:** These params are initialised with their respective default values that the model was trained to have.
 
 **Dashboard Output:** 
 Table with 2 columns: DocumentName and ClassificationResult (whether its a science document or not)
 
 ## 4. Usecases tested:
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
+
 ### Case1: Threshold 0.5 - Some documents are classified as true while some as false
 <img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=600/>
+
 ### Case2: Threshold 1 - All documents are classified as true
 <img src="https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png" width=600/>
+
 ### Case3: Threshold 0 - All documents are classified as false
 <img src="https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png" width=600/>
 
+## 5. Get Running
+- mvn clean install
+- spark-submit --class com.spoddutur.MainClass <PATH_TO_20news-bydate.jar_FILE>
 
-### 1.1 What are hyperparameters?
-Logistic regressions, decision trees, SVMs, neural networks etc have a set of structural choices that one must make before actually fitting the model parameters. For example, within the logistic regression family, you can build separate models using either L1 or L2 regularization penalties. Within the decision tree family, you can have different models with different structural choices such as the depth of the tree, pruning thresholds, or even the splitting criteria.
-These structural choices are called hyperparameters.
+## 6. Structure of files in this repository
+- ***data:*** Contains training and test news data taken from [scikit](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html).
+- ***predictions.json:*** Final output of our trained model predictions on test data.
+- ***trained_model:*** Final model we trained
+- ***src/main/scala/com/spoddutur/MainApp.scala:*** Main class of this project.
 
-### 1.2 Iteration in building a model
-For instance, training a logistic regression model actually is a two-stage process: 
-1. Decide hyperparameters for the model. Example: Should the model have an L1 or L2 penalty to prevent overfitting?
-2. Then, fit the model parameters to the data. Example: What are the model coefficients that minimize the loss function?
+## 7. Requirements
+- Spark 2.1 and Spark ML
+- Scala 2.11
 
-Once the model is ready, to evaluate its performance, there would be some edge cases that we might want to test the model against.
+## 8. References
+- [Mastering Apache Spark GitBook](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib/spark-mllib-pipelines-example-classification.html)
+- [Building, Debugging, and Tuning Spark Machine Learning Pipelines - Joseph Bradley (Databricks)](https://www.youtube.com/watch?v=OednhGRp938&feature=youtu.be)
+- [20News Test and Training Data](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html)
+- [About Model HyperParameters](https://elitedatascience.com/machine-learning-iteration)
+
+## Appendix:
+Model built for Binary Classification of News
+-------
+It's a Spark 2.1 ML implementation to classify news documents into Science or NonScience category. We've done this using K-Fold CrossValidation on a ML Pipeline.
+
+Input Data Distribution
+-----
+Label|Training Data Counts| Test Data Counts
+---|---|---
+Science|8941|5953
+NonScience|2373|1579
+
+Pipeline used for training
+------
+Following diagram depicts the pipeline we used for news classification. Image taken and modified from [here](http://karlrosaen.com/ml/learning-log/2016-06-20/)). 
+
+![pipeline-diagram](https://cloud.githubusercontent.com/assets/22542670/21791030/2c3c0202-d706-11e6-9db4-de24ed14ce98.png)
+
+ParamsGrid used for k-fold
+-----
+```
+val paramGrid = new ParamGridBuilder()
+  .addGrid(hashingTF.numFeatures, Array(1000, 10000))
+  .addGrid(lr.regParam, Array(0.05, 0.2))
+  .addGrid(lr.maxIter, Array(5, 10, 15))
+  .build
+```
+
+Evaluator used
+-----
+```
+import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
+val evaluator = new BinaryClassificationEvaluator().setMetricName("areaUnderROC")
+```
+
+Final accuracy achieved
+-----
+0.9296967048295749
+
+K-Fold Best Params
+---
+```
+{
+	logreg_2be4a9a4df41-maxIter: 10,
+	hashingTF_5e435011f5a5-numFeatures: 10000,
+	logreg_2be4a9a4df41-regParam: 0.2
+}
+```
+
