@@ -6,8 +6,8 @@ This project shows how to use SPARK MLLib and build a ML Dashboard to:
 ## 1. Central Idea
 Logistic regressions, decision trees, SVMs, neural networks etc have a set of structural choices that one must make before actually fitting the model parameters. For example, within the logistic regression family, you can build separate models using either L1 or L2 regularization penalties. Within the decision tree family, you can have different models with different structural choices such as the depth of the tree, pruning thresholds, or even the splitting criteria. These structural choices are called hyperparameters.
 
-Taditionally, for a datascienctist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters and test it using test data. If the results are not matching the expectations, this could potentially lead to another iteration of tweaking the model and evaluating it.
-In this project, am proposing a solution to ease datascientists off some part of this iteration.
+Taditionally, for a datascientist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters and test it using test data. If the results are not matching the expectations, this could potentially lead to another iteration of tweaking the model and evaluating it.
+In this project, am proposing a solution to ease datascientist's iteration turn-around time and improve their efficiency.
 
 ## 2. Proposal:
 - Load your trained model using Spark-ML
