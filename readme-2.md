@@ -42,13 +42,13 @@ Table with 2 columns: DocumentName and ClassificationResult (whether its a scien
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
 
 ### Case1: Threshold 0.5 - Some documents are classified as true while some as false
-<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=500/>
+<img width="450" alt="screen shot 2017-10-08 at 8 56 44 pm" src="https://user-images.githubusercontent.com/22542670/31318203-055813ce-ac6c-11e7-8eb0-e4da72b6a83a.png">
 
 ### Case2: Threshold 1 - All documents are classified as true
-<img src="https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png" width=500/>
+<img width="450" alt="screen shot 2017-10-08 at 8 57 18 pm" src="https://user-images.githubusercontent.com/22542670/31318205-0559e87a-ac6c-11e7-9829-7ceecf887064.png">
 
 ### Case3: Threshold 0 - All documents are classified as false
-<img src="https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png" width=500/>
+<img width="450" alt="screen shot 2017-10-08 at 8 57 38 pm" src="https://user-images.githubusercontent.com/22542670/31318204-0558f5b4-ac6c-11e7-981b-d22e2f7ba45d.png">
 
 ## 5. Get Running
 - mvn clean install
