@@ -38,16 +38,16 @@ For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classif
 **Dashboard Output:** 
 Table with 2 columns: DocumentName and ClassificationResult (whether its a science document or not)
 
-## 4. Usecases tested:
+## 4. Working with the Dashboard:
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
 
-### Case1: Threshold 0.5 - Some documents are classified as true while some as false
+### Case1: Threshold 0.5 - Some documents are classified as true while the rest are false
 <img width="450" alt="screen shot 2017-10-08 at 8 56 44 pm" src="https://user-images.githubusercontent.com/22542670/31318203-055813ce-ac6c-11e7-8eb0-e4da72b6a83a.png">
 
-### Case2: Threshold 1 - All documents are classified as true
+### Case2: Threshold 1 - All documents are classified as false
 <img width="450" alt="screen shot 2017-10-08 at 8 57 18 pm" src="https://user-images.githubusercontent.com/22542670/31318205-0559e87a-ac6c-11e7-9829-7ceecf887064.png">
 
-### Case3: Threshold 0 - All documents are classified as false
+### Case3: Threshold 0 - All documents are classified as true
 <img width="450" alt="screen shot 2017-10-08 at 8 57 38 pm" src="https://user-images.githubusercontent.com/22542670/31318204-0558f5b4-ac6c-11e7-981b-d22e2f7ba45d.png">
 
 ## 5. Get Running
