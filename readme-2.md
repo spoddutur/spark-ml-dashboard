@@ -13,29 +13,32 @@ In this project, am proposing a solution to ease datascientists off some part of
 - Have a dashboard where the hyperparameters like regularization params, thresholds etc are exposed for user to tweak
 - Quickly test the model with the new params on test dataset
 
-## 3. Demo:
+## 3. ML Dashboard Inputs/Outputs and Demo:
+
+**Demo:**
+![out](https://user-images.githubusercontent.com/22542670/31316609-3e301304-ac4e-11e7-9019-196ca0c95f5a.gif)
+
+**Model used in this project:**
 For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found here.
 
+**Model params available for user to tweak:**
 I have exposed following four parameters of this model for user to play and test:
 1. LinearRegression - Threshold
 2. LinearRegression - RegularizationParam  
 3. LinearRegression - Max Iterations  
 4. HashingTF - Number of Features
 
-**Initial values:** These params are displayed with their respective default values that the model was trained to have.
-
-** Testing inputs:**
+**Dashboard Inputs:**
 - Model params
 - Folder containing the test data
 
-** Test output:** 
+**Initial values:** These params are displayed with their respective default values that the model was trained to have.
+
+**Dashboard Output:** 
 Table with 2 columns: DocumentName and ClassificationResult (whether its a science document or not)
 
-Below video illustrates the same:
-![out](https://user-images.githubusercontent.com/22542670/31316609-3e301304-ac4e-11e7-9019-196ca0c95f5a.gif)
-
-## 4. Snapshots of results with different values of Threshold
-For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1
+## 4. Usecases tested:
+For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
 - Case1: Threshold 0.5 - Some documents are classified as true while some as false
 ![image](https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png)
 - Case2: Threshold 1 - All documents are classified as true
