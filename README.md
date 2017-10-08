@@ -1,6 +1,6 @@
 # Spark ML Dashboard to tweak and test your model
 This project shows how to use SPARK MLLib and build a ML Dashboard to:
-1. Expose our model via an endpoint for users to play and tweak with the model-params 
+1. Expose our ML model via an endpoint for users to play and tweak with the model-params 
 2. Quickly test the model with the new params using sample test data.
 
 ## 1. Central Idea
@@ -22,7 +22,7 @@ In this project, am proposing a solution to ease datascientist's iteration turn-
 
 ### 3.2 Dashboard Inputs:
 **Model used for testing in this project:**
-For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found [here](https://github.com/spoddutur/20news-bydate/blob/master/README2.md).
+For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found [here](https://github.com/spoddutur/spark-ml-dashboard/blob/master/README2.md).
 
 **Dashboard Inputs submitted by user:**
 - Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
