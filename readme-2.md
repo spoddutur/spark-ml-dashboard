@@ -22,7 +22,7 @@ In this project, am proposing a solution to ease datascientists off some part of
 
 ### 3.2 Dashboard Inputs:
 **Model used for testing in this project:**
-For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found in the appendix section below.
+For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found [here](https://github.com/spoddutur/20news-bydate/blob/master/README.md).
 
 **Dashboard Inputs submitted by user:**
 - Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
@@ -72,53 +72,3 @@ This project should be a good starting point on building a ML Dashboard where yo
 - [Building, Debugging, and Tuning Spark Machine Learning Pipelines - Joseph Bradley (Databricks)](https://www.youtube.com/watch?v=OednhGRp938&feature=youtu.be)
 - [20News Test and Training Data](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html)
 - [About Model HyperParameters](https://elitedatascience.com/machine-learning-iteration)
-
-## 10. Appendix:
-Model built for Binary Classification of News
--------
-It's a Spark 2.1 ML implementation to classify news documents into Science or NonScience category. We've done this using K-Fold CrossValidation on a ML Pipeline.
-
-Input Data Distribution
------
-Label|Training Data Counts| Test Data Counts
----|---|---
-Science|8941|5953
-NonScience|2373|1579
-
-Pipeline used for training
-------
-Following diagram depicts the pipeline we used for news classification. Image taken and modified from [here](http://karlrosaen.com/ml/learning-log/2016-06-20/)). 
-
-![pipeline-diagram](https://cloud.githubusercontent.com/assets/22542670/21791030/2c3c0202-d706-11e6-9db4-de24ed14ce98.png)
-
-ParamsGrid used for k-fold
------
-```
-val paramGrid = new ParamGridBuilder()
-  .addGrid(hashingTF.numFeatures, Array(1000, 10000))
-  .addGrid(lr.regParam, Array(0.05, 0.2))
-  .addGrid(lr.maxIter, Array(5, 10, 15))
-  .build
-```
-
-Evaluator used
------
-```
-import org.apache.spark.ml.evaluation.BinaryClassificationEvaluator
-val evaluator = new BinaryClassificationEvaluator().setMetricName("areaUnderROC")
-```
-
-Final accuracy achieved
------
-0.9296967048295749
-
-K-Fold Best Params
----
-```
-{
-	logreg_2be4a9a4df41-maxIter: 10,
-	hashingTF_5e435011f5a5-numFeatures: 10000,
-	logreg_2be4a9a4df41-regParam: 0.2
-}
-```
-
