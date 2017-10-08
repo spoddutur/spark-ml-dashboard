@@ -38,11 +38,11 @@ Table with 2 columns: DocumentName and ClassificationResult (whether its a scien
 ## 4. Usecases tested:
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
 ### Case1: Threshold 0.5 - Some documents are classified as true while some as false
-<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=300 height=300/>
-- Case2: Threshold 1 - All documents are classified as true
-![image](https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png)
-- Case3: Threshold 0 - All documents are classified as false
-![image](https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png)
+<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=600/>
+### Case2: Threshold 1 - All documents are classified as true
+<img src="https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png" width=600/>
+### Case3: Threshold 0 - All documents are classified as false
+<img src="https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png" width=600/>
 
 
 ### 1.1 What are hyperparameters?
