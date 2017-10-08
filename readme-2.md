@@ -4,7 +4,7 @@ This project shows how to use SPARK MLLib and build a ML Dashboard to:
 2. Quickly test the model with the new params using sample test data.
 
 ## 1. Central Idea
-Taditionally, for a datascienctist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters or model-coeficients and test it using test data.
+Taditionally, for a datascienctist, building a classification model is an iterative process of coming up with the model, tweak the hyperparameters and test it using test data.
 If the results are not matching the expectations, this could potentially lead to another iteration of tweaking the model and evaluating it.
 In this project, am proposing a solution to ease datascientists off some part of this iteration.
 
@@ -14,8 +14,7 @@ In this project, am proposing a solution to ease datascientists off some part of
 - Quickly test the model with the new params on test dataset
 
 ## 3. Demo:
-For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. 
-I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found here.
+For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found here.
 
 I have exposed following four parameters of this model for user to play and test:
 1. LinearRegression - Threshold
