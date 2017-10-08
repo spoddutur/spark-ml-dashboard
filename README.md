@@ -22,7 +22,7 @@ In this project, am proposing a solution to ease datascientists off some part of
 
 ### 3.2 Dashboard Inputs:
 **Model used for testing in this project:**
-For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found [here](https://github.com/spoddutur/20news-bydate/blob/master/README.md).
+For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found [here](https://github.com/spoddutur/20news-bydate/blob/master/README2.md).
 
 **Dashboard Inputs submitted by user:**
 - Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
