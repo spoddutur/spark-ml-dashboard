@@ -21,15 +21,13 @@ In this project, am proposing a solution to ease datascientists off some part of
 **Model used in this project:**
 For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found here.
 
-**Model params available for user to tweak:**
-I have exposed following four parameters of this model for user to play and test:
-1. LinearRegression - Threshold
-2. LinearRegression - RegularizationParam  
-3. LinearRegression - Max Iterations  
-4. HashingTF - Number of Features
-
 **Dashboard Inputs:**
-- Model params
+- Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
+  1. LinearRegression - Threshold
+  2. LinearRegression - RegularizationParam  
+  3. LinearRegression - Max Iterations  
+  4. HashingTF - Number of Features
+
 - Folder containing the test data
 
 **Initial values:** These params are displayed with their respective default values that the model was trained to have.
@@ -39,8 +37,8 @@ Table with 2 columns: DocumentName and ClassificationResult (whether its a scien
 
 ## 4. Usecases tested:
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
-- Case1: Threshold 0.5 - Some documents are classified as true while some as false
-![image](https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png)
+### Case1: Threshold 0.5 - Some documents are classified as true while some as false
+<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=300 height=300/>
 - Case2: Threshold 1 - All documents are classified as true
 ![image](https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png)
 - Case3: Threshold 0 - All documents are classified as false
