@@ -16,13 +16,15 @@ In this project, am proposing a solution to ease datascientists off some part of
 
 ## 3. ML Dashboard Inputs/Outputs and Demo:
 
-**Demo:**
+### 3.1 Dashboard Demo:
+
 ![out](https://user-images.githubusercontent.com/22542670/31316609-3e301304-ac4e-11e7-9019-196ca0c95f5a.gif)
 
-**Model used in this project:**
+### 3.2 Dashboard Inputs:
+**Model used for testing in this project:**
 For the purpose of demo, I've implemented a model using Spark 2.1 ML, to classify news documents into Science or NonScience category. I've done this using K-Fold CrossValidation on a ML Pipeline. Further details on the trained model can be found in the appendix section below.
 
-**Dashboard Inputs:**
+**Dashboard Inputs submitted by user:**
 - Model params: As you can see in the above demo, I have exposed following four parameters of this model for user to play and test:
   1. LinearRegression - Threshold
   2. LinearRegression - RegularizationParam  
@@ -40,13 +42,13 @@ Table with 2 columns: DocumentName and ClassificationResult (whether its a scien
 For further clarity, please check below three snapshots, where the LogisticRegression Threshold param was tweaked to 0, 0.5 and 1 values respectively to verify the classification result.
 
 ### Case1: Threshold 0.5 - Some documents are classified as true while some as false
-<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=600/>
+<img src="https://user-images.githubusercontent.com/22542670/31317769-585b38b0-ac64-11e7-81cf-9e95cabeba9c.png" width=500/>
 
 ### Case2: Threshold 1 - All documents are classified as true
-<img src="https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png" width=600/>
+<img src="https://user-images.githubusercontent.com/22542670/31317787-9f182d80-ac64-11e7-8512-8af785ab7f04.png" width=500/>
 
 ### Case3: Threshold 0 - All documents are classified as false
-<img src="https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png" width=600/>
+<img src="https://user-images.githubusercontent.com/22542670/31317789-b45624d6-ac64-11e7-899f-76b5a622c1ef.png" width=500/>
 
 ## 5. Get Running
 - mvn clean install
@@ -62,13 +64,16 @@ For further clarity, please check below three snapshots, where the LogisticRegre
 - Spark 2.1 and Spark ML
 - Scala 2.11
 
-## 8. References
+## 8. Conclusion
+This project should be a good starting point on building a ML Dashboard where you can plug and play your Models and quickly verify how your model is classifying any corner test cases.
+
+## 9. References
 - [Mastering Apache Spark GitBook](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-mllib/spark-mllib-pipelines-example-classification.html)
 - [Building, Debugging, and Tuning Spark Machine Learning Pipelines - Joseph Bradley (Databricks)](https://www.youtube.com/watch?v=OednhGRp938&feature=youtu.be)
 - [20News Test and Training Data](http://scikit-learn.org/stable/datasets/twenty_newsgroups.html)
 - [About Model HyperParameters](https://elitedatascience.com/machine-learning-iteration)
 
-## Appendix:
+## 10. Appendix:
 Model built for Binary Classification of News
 -------
 It's a Spark 2.1 ML implementation to classify news documents into Science or NonScience category. We've done this using K-Fold CrossValidation on a ML Pipeline.
