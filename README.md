@@ -42,13 +42,13 @@ Table with 2 columns: DocumentName and ClassificationResult (whether its a scien
 Let's start tweaking the parameters to verify the working of dashboard..
 
 ### Case1: Threshold 0.5 - Some documents are classified as true while the rest are false
-<img width="450" alt="screen shot 2017-10-08 at 8 56 44 pm" src="https://user-images.githubusercontent.com/22542670/31318203-055813ce-ac6c-11e7-8eb0-e4da72b6a83a.png">
+<img width="450" alt="screen shot 2017-10-08 at 8 57 38 pm" src="https://user-images.githubusercontent.com/22542670/31318204-0558f5b4-ac6c-11e7-981b-d22e2f7ba45d.png">
 
 ### Case2: Threshold 1 - All documents are classified as false
 <img width="450" alt="screen shot 2017-10-08 at 8 57 18 pm" src="https://user-images.githubusercontent.com/22542670/31318205-0559e87a-ac6c-11e7-9829-7ceecf887064.png">
 
 ### Case3: Threshold 0 - All documents are classified as true
-<img width="450" alt="screen shot 2017-10-08 at 8 57 38 pm" src="https://user-images.githubusercontent.com/22542670/31318204-0558f5b4-ac6c-11e7-981b-d22e2f7ba45d.png">
+<img width="450" alt="screen shot 2017-10-08 at 8 56 44 pm" src="https://user-images.githubusercontent.com/22542670/31318203-055813ce-ac6c-11e7-8eb0-e4da72b6a83a.png">
 
 ## 5. Get Running
 - mvn clean install
